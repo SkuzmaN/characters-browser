@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+
 import 'package:marvel_heroes/models/Character.dart';
 
 class CharacterDetails extends StatelessWidget {
@@ -11,21 +13,28 @@ class CharacterDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     Widget _buildHeader() {
       return new Container(
-        padding: const EdgeInsets.symmetric(horizontal: 24.0),
-        margin: const EdgeInsets.symmetric(vertical: 24.0),
+
         child: new Center(
           child: new Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              new Container(
-                child: new CircleAvatar(
-                  backgroundColor: Colors.red[700],
-                  backgroundImage: new NetworkImage(character.thumbnail),
-                ),
-                width: 150.0,
-                height: 150.0,
-              ),
+                  new CachedNetworkImage(
+                    placeholder: new Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        new Container(
+                          child: new Center(child: new CircularProgressIndicator()),
+                          height: 200.0,
+                        )
+                      ],
+                    ),
+                    imageUrl: character.thumbnail,
+                    height: 200.0,
+                    fit: BoxFit.cover,
+                  ),
               new Container(
                 margin: const EdgeInsets.only(top: 24.0),
+                padding: const EdgeInsets.symmetric(horizontal: 24.0),
                 child: new Text(
                   character.name,
                   textAlign: TextAlign.center,
@@ -38,6 +47,7 @@ class CharacterDetails extends StatelessWidget {
               ),
               new Container(
                 margin: const EdgeInsets.symmetric(vertical: 24.0),
+                padding: const EdgeInsets.symmetric(horizontal: 24.0),
                 child: new Text(
                   character.description,
                   textAlign: TextAlign.center,
@@ -75,10 +85,10 @@ class CharacterDetails extends StatelessWidget {
     }
 
     return new Scaffold(
-      backgroundColor: Colors.red,
+      backgroundColor: Colors.black,
       appBar: new AppBar(
         title: new Text("Character Details"),
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.red,
       ),
       body: new SingleChildScrollView(
           child: new Column(

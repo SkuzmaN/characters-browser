@@ -8,10 +8,10 @@ class CharactersList extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return new Scaffold(
-      backgroundColor: Colors.red,
+      backgroundColor: Colors.black,
       appBar: new AppBar(
         title: new Text('Marvel\'s characters'),
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.red,
       ),
       body: new Center(
         // Center is a layout widget. It takes a single child and positions it
@@ -41,7 +41,7 @@ class CharactersList extends StatelessWidget {
               }else if (snapshot.hasError) {
                 return new Text("${snapshot.error}");
               }
-              return new CircularProgressIndicator();
+              return new CircularProgressIndicator(backgroundColor: Colors.white,);
             },
           )),
     );

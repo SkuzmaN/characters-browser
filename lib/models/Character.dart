@@ -18,8 +18,8 @@ class Character {
       id: json['id'],
       name: json['name'],
       description: json['description'],
-      thumbnail: json['thumbnail'],
-      comics: json['comics'],
+      thumbnail: json['thumbnail']['path']+'.'+json['thumbnail']['extension'],
+      comics: json['comics']['items'].map((i) => i['name']).toList(),
     );
   }
 }
