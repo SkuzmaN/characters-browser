@@ -13,39 +13,41 @@ class CharacterDetails extends StatelessWidget {
       return new Container(
         padding: const EdgeInsets.symmetric(horizontal: 24.0),
         margin: const EdgeInsets.symmetric(vertical: 24.0),
-        child: new Column(
-          children: <Widget>[
-            new Container(
-              child: new CircleAvatar(
-                backgroundColor: Colors.green[500],
-                backgroundImage: new NetworkImage(character.thumbnail),
+        child: new Center(
+          child: new Column(
+            children: <Widget>[
+              new Container(
+                child: new CircleAvatar(
+                  backgroundColor: Colors.red[700],
+                  backgroundImage: new NetworkImage(character.thumbnail),
+                ),
+                width: 150.0,
+                height: 150.0,
               ),
-              width: 150.0,
-              height: 150.0,
-            ),
-            new Container(
-              margin: const EdgeInsets.only(top: 24.0),
-              child: new Text(
-                character.name,
-                textAlign: TextAlign.center,
-                style: new TextStyle(
-                  color: Colors.white,
-                  fontSize:
-                      Theme.of(context).primaryTextTheme.display1.fontSize,
+              new Container(
+                margin: const EdgeInsets.only(top: 24.0),
+                child: new Text(
+                  character.name,
+                  textAlign: TextAlign.center,
+                  style: new TextStyle(
+                    color: Colors.white,
+                    fontSize:
+                        Theme.of(context).primaryTextTheme.display1.fontSize,
+                  ),
                 ),
               ),
-            ),
-            new Container(
-              margin: const EdgeInsets.symmetric(vertical: 24.0),
-              child: new Text(
-                character.description,
-                textAlign: TextAlign.center,
-                style: new TextStyle(
-                  color: Colors.white,
+              new Container(
+                margin: const EdgeInsets.symmetric(vertical: 24.0),
+                child: new Text(
+                  character.description,
+                  textAlign: TextAlign.center,
+                  style: new TextStyle(
+                    color: Colors.white,
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       );
     }
