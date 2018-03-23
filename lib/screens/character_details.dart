@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
-import 'package:marvel_heroes/models/Character.dart';
+import 'package:marvel_heroes/models/character.dart';
 
 class CharacterDetails extends StatelessWidget {
   final Character character;
