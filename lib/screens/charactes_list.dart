@@ -67,15 +67,12 @@ class CharacterListState extends State<CharactersList> {
           return new ListTile(
             leading: new Container(
               child: new CircleAvatar(
-                backgroundColor: Colors.red[700],
                 backgroundImage: new NetworkImage(_characters[index].thumbnail),
               ),
             ),
             title: new Text(
               _characters[index].name,
-              style: new TextStyle(
-                color: Colors.white,
-              ),
+              style: Theme.of(context).textTheme.body1,
             ),
             onTap: () {
               Navigator.push(
@@ -90,16 +87,12 @@ class CharacterListState extends State<CharactersList> {
     }
 
     return new Scaffold(
-        backgroundColor: Colors.black,
         appBar: new AppBar(
           title: new Text('Marvel\'s characters'),
-          backgroundColor: Colors.red,
         ),
         body: new Center(
-          // Center is a layout widget. It takes a single child and positions it
-          // in the middle of the parent.
             child: _fetching && _page == 1
-                ? new CircularProgressIndicator(backgroundColor: Colors.white)
+                ? new CircularProgressIndicator()
                 : _renderList()));
   }
 }

@@ -50,11 +50,7 @@ class CharacterDetails extends StatelessWidget {
                 child: new Text(
                   character.name,
                   textAlign: TextAlign.center,
-                  style: new TextStyle(
-                    color: Colors.white,
-                    fontSize:
-                        Theme.of(context).primaryTextTheme.display1.fontSize,
-                  ),
+                  style: Theme.of(context).textTheme.display1,
                 ),
               ),
               new Container(
@@ -63,9 +59,7 @@ class CharacterDetails extends StatelessWidget {
                 child: new Text(
                   character.description,
                   textAlign: TextAlign.center,
-                  style: new TextStyle(
-                    color: Colors.white,
-                  ),
+                  style: Theme.of(context).textTheme.body1,
                 ),
               ),
             ],
@@ -97,28 +91,22 @@ class CharacterDetails extends StatelessWidget {
     }
 
     return new Scaffold(
-      backgroundColor: Colors.black,
       appBar: new AppBar(
         title: new Text("Character Details"),
-        backgroundColor: Colors.red,
       ),
       body: new SingleChildScrollView(
           child: new Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           _buildHeader(),
-          new Divider(color: Colors.white),
+          new Divider(),
           new Container(
             padding: const EdgeInsets.only(left: 24.0),
             margin: const EdgeInsets.only(top: 24.0),
             child: new Text(
               'Comics where this character appears:',
               textAlign: TextAlign.left,
-              style: new TextStyle(
-                color: Colors.white,
-                fontSize: Theme.of(context).primaryTextTheme.title.fontSize,
-                fontWeight: FontWeight.bold,
-              ),
+              style: Theme.of(context).textTheme.subhead,
             ),
           ),
           _buildComicList(),
