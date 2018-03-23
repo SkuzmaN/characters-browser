@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 import 'package:marvel_heroes/models/character.dart';
-
+import 'package:marvel_heroes/screens/character_picture.dart';
 class CharacterDetails extends StatelessWidget {
   final Character character;
 
@@ -18,7 +18,17 @@ class CharacterDetails extends StatelessWidget {
           child: new Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-                  new CachedNetworkImage(
+              new GestureDetector(
+                onTap:(){
+                  Navigator.push(
+                      context,
+                      new MaterialPageRoute(
+                          builder: (context) =>
+                          new CharacterPicture(character.thumbnail,character.name)));
+                },
+                child: new Hero(
+                  tag: 'character-image',
+                  child: new CachedNetworkImage(
                     placeholder: new Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -32,6 +42,8 @@ class CharacterDetails extends StatelessWidget {
                     height: 200.0,
                     fit: BoxFit.cover,
                   ),
+                ),
+              ),
               new Container(
                 margin: const EdgeInsets.only(top: 24.0),
                 padding: const EdgeInsets.symmetric(horizontal: 24.0),
@@ -115,3 +127,5 @@ class CharacterDetails extends StatelessWidget {
     );
   }
 }
+
+

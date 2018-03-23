@@ -3,6 +3,7 @@ import 'package:marvel_heroes/models/character.dart';
 import 'package:marvel_heroes/screens/character_details.dart';
 import 'package:marvel_heroes/services/api.dart' show fetchCharacters;
 
+
 class CharactersList extends StatefulWidget {
   @override
   createState() => new CharacterListState();
@@ -14,6 +15,7 @@ class CharacterListState extends State<CharactersList> {
   bool _fetching = true;
   int _page = 1;
   final int _limit = 20;
+
   @override
   void initState() {
     super.initState();
@@ -63,6 +65,12 @@ class CharacterListState extends State<CharactersList> {
             );
           }
           return new ListTile(
+            leading: new Container(
+              child: new CircleAvatar(
+                backgroundColor: Colors.red[700],
+                backgroundImage: new NetworkImage(_characters[index].thumbnail),
+              ),
+            ),
             title: new Text(
               _characters[index].name,
               style: new TextStyle(
@@ -74,7 +82,7 @@ class CharacterListState extends State<CharactersList> {
                   context,
                   new MaterialPageRoute(
                       builder: (context) =>
-                          new CharacterDetails(character: _characters[index])));
+                      new CharacterDetails(character: _characters[index])));
             },
           );
         },
@@ -88,8 +96,8 @@ class CharacterListState extends State<CharactersList> {
           backgroundColor: Colors.red,
         ),
         body: new Center(
-            // Center is a layout widget. It takes a single child and positions it
-            // in the middle of the parent.
+          // Center is a layout widget. It takes a single child and positions it
+          // in the middle of the parent.
             child: _fetching && _page == 1
                 ? new CircularProgressIndicator(backgroundColor: Colors.white)
                 : _renderList()));
