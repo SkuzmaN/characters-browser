@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:marvel_heroes/screens/master_detail_container.dart';
+import 'package:marvel_heroes/screens/marvel_characters.dart';
 
 void main() {
   runApp(new MyApp());
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         dividerColor: Colors.white,
       ),
-      home: new MasterDetailContainer(),
+      home: new MarvelCharacters(),
     );
   }
 }

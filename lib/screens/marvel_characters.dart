@@ -6,36 +6,36 @@ import 'package:marvel_heroes/features/characters/screens/details.dart';
 import 'package:marvel_heroes/features/characters/screens/list.dart';
 
 
-class MasterDetailContainer extends StatefulWidget {
+class MarvelCharacters extends StatefulWidget {
   @override
   _MasterDetailContainerState createState() =>
       new _MasterDetailContainerState();
 }
 
 
-class _MasterDetailContainerState extends State<MasterDetailContainer> {
+class _MasterDetailContainerState extends State<MarvelCharacters> {
   static const int kTabletBreakpoint = 600;
   Character _selected;
 
 
-  Widget _buildMobileLayout(){
+  Widget _buildMobileLayout() {
     return new CharactersList(
-        characterSelectedCallback: (character){
+        characterSelectedCallback: (character) {
           Navigator.push(
               context,
               new MaterialPageRoute(
                   builder: (context) =>
                   new CharacterDetails(
-                      character: character,
+                    character: character,
                     isInTabletLayout: false,
                   )));
         });
   }
 
-  Widget _buildEmptyState(){
+  Widget _buildEmptyState() {
     return new Center(
       child: new Text(
-        "No character selected"
+          "No character selected"
       ),
     );
   }
@@ -61,11 +61,11 @@ class _MasterDetailContainerState extends State<MasterDetailContainer> {
         ),
         new Flexible(
           flex: 3,
-          child: _selected !=null ? new CharacterDetails(
+          child: _selected != null ? new CharacterDetails(
             key: new Key(_selected.id.toString()),
             character: _selected,
             isInTabletLayout: true,
-          ):_buildEmptyState(),
+          ) : _buildEmptyState(),
         ),
       ],
     );
