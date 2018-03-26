@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
-import 'package:marvel_heroes/screens/charactes_list.dart';
+import 'package:marvel_heroes/screens/master_detail_container.dart';
 
 void main() {
-//  debugPaintSizeEnabled = true;
   runApp(new MyApp());
 }
 
@@ -12,7 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Marvel characters',
       theme: new ThemeData(
         scaffoldBackgroundColor: Colors.black,
         accentColor: Colors.red,
@@ -25,7 +23,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         dividerColor: Colors.white,
       ),
-      home: new CharactersList(),
+      home: new MasterDetailContainer(),
     );
   }
 }

@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:meta/meta.dart';
 import 'package:marvel_heroes/models/character.dart';
 import 'package:marvel_heroes/screens/character_details.dart';
 import 'package:marvel_heroes/services/api.dart' show fetchCharacters;
 
-
 class CharactersList extends StatefulWidget {
   @override
   createState() => new CharacterListState();
+  CharactersList({
+    @required this.characterSelectedCallback,
+    this.selected
+  });
+
+  final ValueChanged<Character> characterSelectedCallback;
+  final Character selected;
 }
 
 class CharacterListState extends State<CharactersList> {
@@ -74,22 +81,14 @@ class CharacterListState extends State<CharactersList> {
               _characters[index].name,
               style: Theme.of(context).textTheme.body1,
             ),
-            onTap: () {
-              Navigator.push(
-                  context,
-                  new MaterialPageRoute(
-                      builder: (context) =>
-                      new CharacterDetails(character: _characters[index])));
-            },
+            onTap: () =>widget.characterSelectedCallback(_characters[index]),
+            selected: widget.selected ==_characters[index],
           );
         },
       );
     }
 
     return new Scaffold(
-        appBar: new AppBar(
-          title: new Text('Marvel\'s characters'),
-        ),
         body: new Center(
             child: _fetching && _page == 1
                 ? new CircularProgressIndicator()
