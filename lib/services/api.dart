@@ -19,8 +19,14 @@ Future<CharactersResponse> fetchCharacters(int page,int limit) async {
       });
 
   final response = await http.get(fluri.toString());
-  final json = JSON.decode(response.body);
-  List<Character> characters =json["data"]["results"].map((row)=> new Character.fromJson(row)).toList();
-  bool hasMore = json["data"]["total"] >page * limit;
+  final Map json = JSON.decode(response.body);
+
+  bool hasMore = false;
+  List<Character> characters = [];
+  if(json["data"] !=null && json["data"]["results"] !=null) {
+    characters =json["data"]["results"].map((row)=> new Character.fromJson(row)).toList();
+    hasMore = json["data"]["total"] >page * limit;
+  }
+
   return new CharactersResponse(characters,hasMore);
 }
