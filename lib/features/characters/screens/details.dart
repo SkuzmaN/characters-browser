@@ -120,7 +120,16 @@ class CharacterDetails extends StatelessWidget {
     ));
 
     if (isInTabletLayout) {
-      return new Center(child: content);
+      return new SingleChildScrollView(
+          child: new Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              _buildHeader(),
+              new Divider(),
+              _buildComicListHeadline(),
+              _buildComicList(),
+            ].where((Object o) => o != null).toList(),
+          ));
     }
     return new Scaffold(
       appBar: new AppBar(
