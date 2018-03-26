@@ -6,7 +6,7 @@ class CharacterPicture extends StatelessWidget {
   final String image;
   final String name;
 
-  CharacterPicture(this.image,this.name);
+  CharacterPicture(this.image, this.name);
 
   @override
   @override
@@ -20,12 +20,16 @@ class CharacterPicture extends StatelessWidget {
         body: new Center(
           child: new Hero(
             tag: heroTag,
-            child: new CachedNetworkImage(
-              placeholder: new CircularProgressIndicator(),
-              imageUrl: image,
+            child: new GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: new CachedNetworkImage(
+                placeholder: new CircularProgressIndicator(),
+                imageUrl: image,
+              ),
             ),
           ),
-        )
-    );
+        ));
   }
 }
