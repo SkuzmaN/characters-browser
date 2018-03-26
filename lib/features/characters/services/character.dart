@@ -3,10 +3,10 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:fluri/fluri.dart';
 import 'package:flutter/services.dart' show rootBundle;
-import 'package:marvel_heroes/models/character.dart';
-import 'package:marvel_heroes/models/api/characters_response.dart';
+import 'package:marvel_heroes/features/characters/models/character.dart';
+import 'package:marvel_heroes/features/characters/services/response/fetch_all.dart';
 
-Future<CharactersResponse> fetchCharacters(int page,int limit) async {
+Future<FetchAllResponse> fetchAll(int page,int limit) async {
   String apiJson = await rootBundle.loadString('assets/api.json');
   Map<String,String> api = JSON.decode(apiJson);
 
@@ -28,5 +28,5 @@ Future<CharactersResponse> fetchCharacters(int page,int limit) async {
     hasMore = json["data"]["total"] >page * limit;
   }
 
-  return new CharactersResponse(characters,hasMore);
+  return new FetchAllResponse(characters,hasMore);
 }

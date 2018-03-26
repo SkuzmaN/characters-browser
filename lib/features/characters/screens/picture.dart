@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:marvel_heroes/features/characters/contants.dart' show heroTag;
 
 class CharacterPicture extends StatelessWidget {
   final String image;
@@ -18,7 +19,7 @@ class CharacterPicture extends StatelessWidget {
         ),
         body: new Center(
           child: new Hero(
-            tag: 'character-image',
+            tag: heroTag,
             child: new CachedNetworkImage(
               placeholder: new CircularProgressIndicator(),
               imageUrl: image,

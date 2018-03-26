@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
-import 'package:marvel_heroes/models/character.dart';
-import 'package:marvel_heroes/screens/character_details.dart';
-import 'package:marvel_heroes/services/api.dart' show fetchCharacters;
+import 'package:marvel_heroes/features/characters/models/character.dart';
+import 'package:marvel_heroes/features/characters/services/character.dart' as CharacterService;
 
 class CharactersList extends StatefulWidget {
   @override
@@ -30,7 +29,7 @@ class CharacterListState extends State<CharactersList> {
   }
 
   void _fetchData() {
-    fetchCharacters(_page, _limit).then((response) {
+    CharacterService.fetchAll(_page, _limit).then((response) {
       this.setState(() {
         _characters.addAll(response.data);
         _isMore = response.hasMore;

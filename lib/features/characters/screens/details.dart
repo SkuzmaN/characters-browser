@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
-import 'package:marvel_heroes/models/character.dart';
-import 'package:marvel_heroes/screens/character_picture.dart';
+import 'package:marvel_heroes/features/characters/models/character.dart';
+import 'package:marvel_heroes/features/characters/screens/picture.dart';
+import 'package:marvel_heroes/features/characters/contants.dart' show heroTag;
 
 class CharacterDetails extends StatelessWidget {
   final Character character;
@@ -32,7 +33,7 @@ class CharacterDetails extends StatelessWidget {
                             character.thumbnail, character.name)));
               },
               child: new Hero(
-                tag: 'character-image',
+                tag: heroTag,
                 child: new CachedNetworkImage(
                   placeholder: new Row(
                     mainAxisAlignment: MainAxisAlignment.center,

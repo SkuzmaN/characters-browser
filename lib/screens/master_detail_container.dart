@@ -1,9 +1,9 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:marvel_heroes/models/character.dart';
-import 'package:marvel_heroes/screens/character_details.dart';
-import 'package:marvel_heroes/screens/charactes_list.dart';
+import 'package:marvel_heroes/features/characters/models/character.dart';
+import 'package:marvel_heroes/features/characters/screens/details.dart';
+import 'package:marvel_heroes/features/characters/screens/list.dart';
 
 
 class MasterDetailContainer extends StatefulWidget {
