@@ -95,6 +95,18 @@ class CharacterDetails extends StatelessWidget {
         ),
       );
     }
+    Widget _buildComicListHeadline(){
+      return character.comics.length ==0?
+      null:new Container(
+        padding: const EdgeInsets.only(left: 24.0),
+        margin: const EdgeInsets.only(top: 24.0),
+        child: new Text(
+          'Comics where this character appears:',
+          textAlign: TextAlign.left,
+          style: Theme.of(context).textTheme.subhead,
+        ),
+      );
+    }
 
     Widget content = new SingleChildScrollView(
         child: new Column(
@@ -102,17 +114,9 @@ class CharacterDetails extends StatelessWidget {
       children: <Widget>[
         _buildHeader(),
         new Divider(),
-        new Container(
-          padding: const EdgeInsets.only(left: 24.0),
-          margin: const EdgeInsets.only(top: 24.0),
-          child: new Text(
-            'Comics where this character appears:',
-            textAlign: TextAlign.left,
-            style: Theme.of(context).textTheme.subhead,
-          ),
-        ),
+        _buildComicListHeadline(),
         _buildComicList(),
-      ],
+      ].where((Object o) => o != null).toList(),
     ));
 
     if (isInTabletLayout) {
